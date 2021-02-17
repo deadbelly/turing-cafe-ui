@@ -16,9 +16,13 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+  updateReservations = () => {
     apiCalls.getReservations()
       .then(response => this.setState({reservations: response}))
+  }
+
+  componentDidMount() {
+    this.updateReservations()
   }
 
   updateForm = event => {
@@ -34,19 +38,21 @@ class App extends Component {
     })
   }
 
+  formatRes = () => {
+    return {
+      date: this.state.formDate.split('-').slice(1).join('/'),
+      id: Date.now(),
+      number: this.state.formGuests,
+      name: this.state.formName,
+      time: this.state.formTime
+    }
+  }
+
   addRes = (event) => {
     event.preventDefault()
-    this.setState({reservations: [
-      ...this.state.reservations,
-      {
-        date: this.state.formDate.split('-').slice(1).join('/'),
-        id: Date.now(),
-        number: this.state.formGuests,
-        name: this.state.formName,
-        time: this.state.formTime
-      }
-    ]})
+    apiCalls.postReservation(this.formatRes())
     this.clearForm()
+    this.updateReservations()
   }
 
   render() {
