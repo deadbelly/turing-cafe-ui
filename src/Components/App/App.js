@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import apiCalls from '../apiCalls';
+import apiCalls from '../../apiCalls';
+import ReservationCard from '../ReservationCard/ReservationCard'
 import './App.css';
 
 class App extends Component {
@@ -23,7 +24,9 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-
+          {this.state.reservations.map(reservation =>
+            <ReservationCard key={reservation.id} reservation={reservation}
+          />)}
         </div>
       </div>
     )
