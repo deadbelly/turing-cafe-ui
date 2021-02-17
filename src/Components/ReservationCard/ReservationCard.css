@@ -2,12 +2,25 @@ article {
   display: flex;
   flex-direction: column;
   width: 80%;
-  background-color: #C7BEF2;
+  background-color: white;
   border: solid 2px #008080;
+  color: #008080;
+  border-radius: 3%;
 }
 
 .date-and-time {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.cancel-btn {
+  background: none;
+  border: none;
+  font-size: 1em;
+  color: #008080;
+}
+
+.cancel-btn:hover {
+  cursor: pointer;
 }
