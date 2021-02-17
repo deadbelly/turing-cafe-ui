@@ -57,7 +57,7 @@ class App extends Component {
 
   deleteRes = (id) => {
     apiCalls.deleteReservation(id)
-    this.updateReservations()
+      .then(response => this.updateReservations())
   }
 
   render() {
