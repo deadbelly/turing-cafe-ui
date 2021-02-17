@@ -12,6 +12,12 @@ const apiCalls = {
       },
       body: JSON.stringify(newRes)
     })
+  },
+
+  deleteReservation(id) {
+    fetch(`http://localhost:3001/api/v1/reservations/${id}`, {
+      method: 'DELETE'
+    })
   }
 }
 
