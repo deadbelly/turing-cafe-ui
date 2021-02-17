@@ -25,8 +25,28 @@ class App extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
+  clearForm = () => {
+    this.setState({
+      formName: '',
+      formDate: null,
+      formTime: null,
+      formGuests: null
+    })
+  }
+
   addRes = (event) => {
-    return true
+    event.preventDefault()
+    this.setState({reservations: [
+      ...this.state.reservations,
+      {
+        date: this.state.formDate.split('-').slice(1).join('/'),
+        id: Date.now(),
+        number: this.state.formGuests,
+        name: this.state.formName,
+        time: this.state.formTime
+      }
+    ]})
+    this.clearForm()
   }
 
   render() {
