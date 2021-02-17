@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
+import apiCalls from '../apiCalls';
 import './App.css';
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      rservations: []
+      reservations: []
     }
   }
-  
+
+  componentDidMount() {
+    apiCalls.getReservations()
+      .then(response => this.setState({reservations: response}))
+  }
+
   render() {
     return (
       <div className="App">
