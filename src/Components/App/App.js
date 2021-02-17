@@ -55,6 +55,11 @@ class App extends Component {
     this.updateReservations()
   }
 
+  deleteRes = (id) => {
+    apiCalls.deleteReservation(id)
+    this.updateReservations()
+  }
+
   render() {
     return (
       <div className="App">
@@ -71,7 +76,10 @@ class App extends Component {
         </div>
         <div className='resy-container'>
           {this.state.reservations.map(reservation =>
-            <ReservationCard key={reservation.id} reservation={reservation}
+            <ReservationCard
+            key={reservation.id}
+            reservation={reservation}
+            deleteRes={this.deleteRes}
           />)}
         </div>
       </div>

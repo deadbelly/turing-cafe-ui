@@ -1,7 +1,7 @@
 import React from 'react'
 import './ReservationCard.css'
 
-const ReservationCard = ({reservation}) => {
+const ReservationCard = ({reservation, deleteRes}) => {
   return (
     <article>
       <h2>{reservation.name}</h2>
@@ -11,6 +11,7 @@ const ReservationCard = ({reservation}) => {
         <p>at</p>
         <h3>{reservation.time}</h3>
       </div>
+      <button onClick={() => deleteRes(reservation.id)}>CANCEL</button>
     </article>
   )
 }
