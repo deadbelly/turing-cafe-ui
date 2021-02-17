@@ -28,7 +28,7 @@ const ReservationForm = ({name, date, time, guests, updateForm, addRes}) => {
         value={guests}
         onChange={updateForm}
       />
-      <button onClick={addRes}>SUBMIT</button>
+      <button name='submit' onClick={addRes}>Add Reservation</button>
     </>
   )
 }

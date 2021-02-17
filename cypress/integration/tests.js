@@ -46,19 +46,21 @@ describe('ReservationForm', () => {
 
 describe('Integration', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'http://localhost:3001/api/v1/reservations',
-    {fixture: 'reservations'})
+    // cy.intercept('GET', 'http://localhost:3001/api/v1/reservations',
+    // {fixture: 'reservations'})
+    // Not sure how to stub api calls with a post and change
 
     cy.visit('http://localhost:3000/')
   })
 
   it.only('As a user I should be able to submit a reservation, and see it appear in the list', () => {
-    cy.get('article').should('have.length', 2)
+    // cy.get('article').should('have.length', 2)
     cy.get('input[name="formName"]').type('Test')
     cy.get('input[name="formDate"]').type('2021-12-12')
     cy.get('input[name="formTime"]').type('07:00')
     cy.get('input[name="formGuests"]').type('3')
-    cy.get('button').click()
-    cy.get('article').should('have.length', 3)
+    cy.get('button[name="submit"]').click()
+    cy.get('article').last().should('have.text', 'TestParty of 312/12at07:00')
+    //this is a bad test because it makes a real post
   })
 })
