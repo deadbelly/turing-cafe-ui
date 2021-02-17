@@ -1,0 +1,13 @@
+article {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  background-color: #C7BEF2;
+  border: solid 2px #008080;
+}
+
+.date-and-time {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
